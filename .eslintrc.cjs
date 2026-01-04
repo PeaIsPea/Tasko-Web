@@ -42,7 +42,12 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        'patterns': [{ 'regex': '^@mui/[^/]+$' }]
+        'patterns': [
+          {
+            'group': ['@mui/[^/]+$'],
+            'message': 'Please use nested imports.'
+          }
+        ]
       }
     ]
   }
