@@ -15,13 +15,13 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
 import myavatar from '~/assets/avatar.png'
 
 const MENU_STYLES = {
-  color: 'primary.main',
-  backgroundColor: 'white',
+  color: 'white',
+  backgroundColor: 'transparent',
   border: 'none',
   paddingX: '5px',
   borderRadius: '4px',
   '& .MuiSvgIcon-root': {
-    color: 'primary.main'
+    color: 'white'
   },
   '&:hover': {
     bgcolor: 'primary.50'
@@ -39,7 +39,8 @@ function BoardBar() {
       paddingX: 2,
       gap: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #00bfa5'
+      borderBottom: '1px solid white',
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#e74c3c')
     }}>
       <Box sx={{
         display: 'flex',
@@ -83,14 +84,29 @@ function BoardBar() {
         alignItems: 'center',
         gap: 2
       }}>
-        <Button variant="outlined" startIcon={<PersonAddAltIcon/>} >Invite</Button>
+        <Button
+          variant="outlined"
+          startIcon={<PersonAddAltIcon/>}
+          sx={{
+            color: 'white',
+            borderColor: 'white',
+            '&:hover': {
+              border: '2px solid white'
+            }
+          }}
+        >
+          Invite
+        </Button>
+
         <AvatarGroup
           max={7}
           sx={{
+            gap: '10px',
             '& .MuiAvatar-root': {
               width: 34,
               height: 34,
-              fontSize: 16
+              fontSize: 16,
+              border: 'none'
             }
           }}>
           <Tooltip title='kimleephuc'>
