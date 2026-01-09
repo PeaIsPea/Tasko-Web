@@ -11,6 +11,7 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import { Tooltip } from '@mui/material'
 import Button from '@mui/material/Button'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
+import { capitalizeFirstChart } from '~/utils/formater'
 
 import myavatar from '~/assets/avatar.png'
 
@@ -28,7 +29,7 @@ const MENU_STYLES = {
   }
 }
 
-function BoardBar() {
+function BoardBar({ board }) {
   return (
     <Box sx={{
       width: '100%',
@@ -49,13 +50,13 @@ function BoardBar() {
         <Chip
           sx={MENU_STYLES}
           icon={<DashboardIcon />}
-          label="kimleephuc"
+          label={ board?.title }
           clickable
         />
         <Chip
           sx={MENU_STYLES}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={ capitalizeFirstChart(board?.type) }
           clickable
         />
         <Chip
