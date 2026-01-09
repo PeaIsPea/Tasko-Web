@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import { useState } from 'react'
-
-import ModeSelect from '~/components/ModeSelect'
+import ModeSelect from '~/components/ModeSelect/ModeSelect'
 import AppsIcon from '@mui/icons-material/Apps'
 import { ReactComponent as TaskoIcon } from '~/assets/logo.svg'
 import SvgIcon from '@mui/material/SvgIcon'
@@ -12,9 +11,7 @@ import Templates from './Menus/Templates'
 import Starred from './Menus/Starred'
 import Button from '@mui/material/Button'
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
-
 import TextField from '@mui/material/TextField'
-
 import Badge from '@mui/material/Badge'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import Tooltip from '@mui/material/Tooltip'
