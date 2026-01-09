@@ -4,7 +4,7 @@ import Col from './Col/Col'
 import { Button } from '@mui/material'
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos'
 
-function ListCols() {
+function ListCols({ columns }) {
   return (
     <Box sx={{
       bgcolor: 'inherit',
@@ -17,10 +17,11 @@ function ListCols() {
         m: 2
       }
     }}>
-
-      <Col />
-      <Col />
-      <Col />
+      {columns?.map((column) => {
+        return (
+          <Col key={column?._id} column={column} />
+        )
+      })}
 
       {/* Button Add new col*/}
       <Box sx={{
@@ -31,7 +32,7 @@ function ListCols() {
         height: 'fit-content',
         bgcolor: '#ffffff3c'
       }}>
-        <Button 
+        <Button
           startIcon={<AddToPhotosIcon />}
           sx={{ color: 'white', width: '100%', justifyContent: 'flex-start', pl: 2.5, py: 1 }}
         >Add new column</Button>
