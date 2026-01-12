@@ -20,6 +20,9 @@ import ListCards from './ListCarts/ListCards'
 import theme from '~/theme'
 import { mapOrder } from '~/utils/sort'
 
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+
 
 function Col({ column }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -28,17 +31,32 @@ function Col({ column }) {
   const handleClose = () => (setAnchorEl(null))
 
   const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
-  return (
-    <Box sx={{
-      minWidth: '300px',
-      maxWidth: '300px',
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
-      ml: 2,
-      borderRadius: '6px',
-      height: 'fit-content',
-      maxHeight: (theme) => `calc(${theme.taskoCustom.boardContentHeight} - ${theme.spacing(5)})`
 
-    }}>
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: column._id,
+    data: { ...column }
+  })
+
+  const dndKitColStyles = {
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
+
+  return (
+    <Box
+      ref={setNodeRef}
+      style={dndKitColStyles}
+      {...attributes}
+      {...listeners}
+      sx={{
+        minWidth: '300px',
+        maxWidth: '300px',
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
+        ml: 2,
+        borderRadius: '6px',
+        height: 'fit-content',
+        maxHeight: (theme) => `calc(${theme.taskoCustom.boardContentHeight} - ${theme.spacing(5)})`
+      }}>
       {/*Column header*/}
       <Box sx={{
         height: (theme) => theme.taskoCustom.colHeaderHeight,
